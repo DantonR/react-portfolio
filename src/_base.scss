@@ -1,0 +1,66 @@
+// Variables
+$color__primary: #39ff53;
+
+@font-face {
+  font-family: "ttbold";
+  src: url("./fonts/TTTravels-Bold.ttf");
+}
+
+@font-face {
+  font-family: "ttblackitalic";
+  src: url("./fonts/TTTravels-BlackItalic.ttf");
+}
+
+@font-face {
+  font-family: "ttdemibold";
+  src: url("./fonts/TTTravels-DemiBold.ttf");
+}
+
+@font-face {
+  font-family: "ttmedium";
+  src: url("./fonts/TTTravels-Medium.ttf");
+}
+
+$font__bold: "ttbold";
+$font__black: "ttblackitalic";
+$font__demi: "ttdemibold";
+$font__med: "ttmedium";
+
+// Major Components & Edits
+body {
+  font-size: 62.5%;
+}
+
+header,
+body {
+  background: black;
+}
+
+main {
+  margin-top: 2rem;
+}
+
+mt-1 {
+  margin-top: 3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  font-size: 1rem;
+  font-family: $font__bold;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: greenyellow;
+}

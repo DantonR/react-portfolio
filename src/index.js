@@ -1,12 +1,61 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import "./style.scss";
+import CustomHeader from "./components/header/header";
+import FrontPage from "./components/frontpage/frontpage";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null
+    };
+  }
+  render() {
+    return (
+      <button
+        className="square"
+        onClick={() => {
+          this.setState({ value: "X" });
+        }}
+      >
+        {this.state.value}
+      </button>
+    );
+  }
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class Board extends React.Component {
+  renderSquare(i) {
+    return <Square value={i} />;
+  }
+
+  render() {
+    const status = "Next player: X";
+
+    return (
+      <div>
+        <p>Test component</p>
+      </div>
+    );
+  }
+}
+
+class Game extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Heading Test</h1>
+        <CustomHeader />
+        <Board />
+        <FrontPage role="DBOY" />
+      </div>
+    );
+  }
+}
+
+// ========================================
+
+ReactDOM.render(<Game />, document.getElementById("root"));

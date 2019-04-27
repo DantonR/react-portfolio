@@ -1,0 +1,67 @@
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  height: auto;
+  box-sizing: content-box;
+  padding-top: 3rem;
+  top: 0;
+  left: 0;
+}
+
+.nav {
+  margin-top: 2rem;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: $color__primary;
+  padding: 0 0.5rem;
+}
+.nav-item {
+  text-align: center;
+}
+
+.nav-item {
+  font-family: $font__black;
+}
+
+.nav__icon {
+  font-size: 0.9rem;
+  margin-right: 0.25rem;
+}
+
+.nav__text {
+  font-size: 0.9rem;
+  font-family: $font__med;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active {
+  color: $color__primary;
+}
+
+.navbar {
+  border-bottom: 1px solid white;
+  padding: 1rem 0;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.header__title {
+  font-family: $font__bold;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  text-align: left;
+  color: white;
+}
+
+.header__nav-menu {
+}
+
+.header__nav-menu-item {
+  display: inline-block;
+  padding: 0.8rem;
+  color: white;
+}
