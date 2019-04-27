@@ -9,7 +9,8 @@ class FrontPage extends React.Component {
     super(props);
     this.state = {
       roleName: "Graphic Designer",
-      paraClassName: "intro-section__paragraph intro-section__paragraph--hide"
+      paraClassName: "intro-section__paragraph intro-section__paragraph--hide",
+      homeImagesClassName: "home-images home-images--show"
     };
 
     this.testEvent = this.testEvent.bind(this);
@@ -27,9 +28,10 @@ class FrontPage extends React.Component {
   }
 
   testEvent() {
-    console.log("working");
+    document.getElementById("homeImages");
     this.setState({
-      paraClassName: "intro-section__paragraph intro-section__paragraph--hide"
+      paraClassName: "intro-section__paragraph intro-section__paragraph--hide",
+      homeImagesClassName: "home-images home-images--hide"
     });
   }
 
@@ -44,7 +46,7 @@ class FrontPage extends React.Component {
             </p>
           </div>
 
-          <div className="home-images">
+          <div className={this.state.homeImagesClassName} id="homeImages">
             <div className="container">
               <div className="row">
                 <div className="col-6">

@@ -24,6 +24,19 @@
   transform: translateY(10rem);
 }
 
+.home-images {
+  transition: all 1s;
+}
+
+.home-images--show {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+.home-images--hide {
+  opacity: 0;
+  transform: translateY(10rem);
+}
+
 .home-images__image {
   width: 100%;
   margin-bottom: 1rem;
