@@ -1,15 +1,26 @@
 import React, { Component } from "react";
+import FrontPage from "../frontpage/frontpage";
 
 class CustomHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null
+      value: null,
+      currentPage: "Current"
     };
+
+    this.changeToWork = this.changeToWork.bind(this);
   }
+
+  changeToWork() {
+    this.setState({
+      currentPage: "Work"
+    });
+  }
+
   render() {
     return (
-      <div>
+      <React.Fragment>
         <header className="header">
           <div className="container">
             <nav className="navbar">
@@ -21,24 +32,20 @@ class CustomHeader extends React.Component {
                 Danton <br /> Ruthe
               </a>
               <ul className="header__nav-menu">
-                <a
-                  href="index.html"
-                  className="header__nav-menu-link"
-                  onClick={() => alert("click")}
+                <li
+                  className="header__nav-menu-item"
+                  onClick={this.changeToWork}
                 >
-                  <li className="header__nav-menu-item">Work</li>
-                </a>
-                <a href="index.html" className="header__nav-menu-link">
-                  <li className="header__nav-menu-item">About</li>
-                </a>
-                <a href="index.html" className="header__nav-menu-link">
-                  <li className="header__nav-menu-item">Contact</li>
-                </a>
+                  Work
+                </li>
+                <li className="header__nav-menu-item">About</li>
+                <li className="header__nav-menu-item">Contact</li>
               </ul>
             </nav>
           </div>
         </header>
-      </div>
+        <FrontPage currentPageProp={this.state.currentPage} />
+      </React.Fragment>
     );
   }
 }

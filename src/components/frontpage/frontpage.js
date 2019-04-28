@@ -17,27 +17,9 @@ class FrontPage extends React.Component {
     this.loadParagraph = this.loadParagraph.bind(this);
   }
 
-  componentDidMount() {
-    setTimeout(this.loadParagraph, 200);
-  }
-
-  loadParagraph() {
-    this.setState({
-      paraClassName: "intro-section__paragraph intro-section__paragraph--show"
-    });
-  }
-
-  testEvent() {
-    document.getElementById("homeImages");
-    this.setState({
-      paraClassName: "intro-section__paragraph intro-section__paragraph--hide",
-      homeImagesClassName: "home-images home-images--hide"
-    });
-  }
-
   render() {
     return (
-      <div>
+      <React.Fragment>
         <main>
           <div className="intro-section">
             <p className={this.state.paraClassName}>
@@ -89,7 +71,7 @@ class FrontPage extends React.Component {
             </div>
           </div>
         </main>
-      </div>
+      </React.Fragment>
     );
   }
 }
