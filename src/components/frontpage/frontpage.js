@@ -5,8 +5,6 @@ import radlerCover from "../../images/Cover Images/radler_cover.jpg";
 import breakersCover from "../../images/Cover Images/breakers_cover.jpg";
 
 const FrontPage = props => {
-  console.dir(props);
-
   return (
     <React.Fragment>
       <div className="intro-section">
@@ -28,7 +26,7 @@ const FrontPage = props => {
                 className="home-images__image"
                 src={annualCover}
                 alt=""
-                onClick={props.onClick}
+                onClick={() => props.changePage("annual")}
               />
             </div>
             <div className="col-6">
@@ -37,13 +35,12 @@ const FrontPage = props => {
               </a>
             </div>
             <div className="col-6 mt-3">
-              <a href="#" className="home-images__link">
-                <img
-                  className="home-images__image"
-                  src={packagingCover}
-                  alt=""
-                />
-              </a>
+              <img
+                className="home-images__image"
+                src={packagingCover}
+                alt=""
+                onClick={console.dir(props)}
+              />
             </div>
             <div className="col-6 mt-3">
               <a href="#" className="home-images__link">

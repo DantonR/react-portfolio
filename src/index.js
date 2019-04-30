@@ -13,10 +13,18 @@ class Index extends React.Component {
       roleName: "Graphic Designer",
       paraClassName: "intro-section__paragraph--hide",
       homeImagesClassName: "home-images--show",
-      currentPage: "home"
+      currentPage: "home",
+      content: [
+        {
+          item1: "annual report",
+          item2: "radler tours"
+        }
+      ]
     };
 
     this.loadParagraph = this.loadParagraph.bind(this);
+    this.changePage = this.changePage.bind(this);
+    this.animateContent = this.animateContent.bind(this);
   }
   componentDidMount() {
     setTimeout(this.loadParagraph, 200);
@@ -28,46 +36,42 @@ class Index extends React.Component {
     });
   }
 
-  testEvent() {
-    this.setState({
-      paraClassName: "intro-section__paragraph--hide",
-      homeImagesClassName: "home-images--hide"
-    });
+  animateContent() {
+    console.log(this.state.currentPage);
+    if (this.state.currentPage === "index") {
+      this.setState({
+        paraClassName: "intro-section__paragraph--hide",
+        homeImagesClassName: "home-images--hide"
+      });
+    }
   }
 
   changePage(pageNumber) {
-    this.setState({
-      currentPage: pageNumber
-    });
-    this.testEvent2();
+    console.log(pageNumber);
+    if (pageNumber === "annual") {
+      this.setState({
+        paraClassName: "intro-section__paragraph--hide",
+        homeImagesClassName: "home-images--hide"
+      });
+    } else if (pageNumber === "index") {
+      this.setState({
+        paraClassName: "intro-section__paragraph--show",
+        homeImagesClassName: "home-images--show"
+      });
+    }
   }
 
-  hideFrontPage() {
-    this.setState({
-      paraClassName: "intro-section__paragraph--hide",
-      homeImagesClassName: "home-images--hide"
-    });
-  }
-
-  showFrontPage() {
-    this.setState({
-      paraClassName: "intro-section__paragraph--show",
-      homeImagesClassName: "home-images--show"
-    });
-  }
-
-  handleClick() {
-    console.log("working");
-  }
+  showFrontPage() {}
 
   render() {
     return (
       <div>
-        <Header onClick={() => this.showFrontPage()} />
+        <Header changePage={this.changePage} />
         <FrontPage
           paraClassName={this.state.paraClassName}
           homeImagesClassName={this.state.homeImagesClassName}
-          onClick={() => this.hideFrontPage()}
+          changePage={this.changePage}
+          data={this.state.content}
         />
       </div>
     );

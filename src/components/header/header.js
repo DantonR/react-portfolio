@@ -9,7 +9,10 @@ function Header(props) {
             Danton <br /> Ruthe
           </a>
           <ul className="header__nav-menu">
-            <li className="header__nav-menu-item" onClick={props.onClick}>
+            <li
+              className="header__nav-menu-item"
+              onClick={() => props.changePage("index")}
+            >
               Work
             </li>
             <li className="header__nav-menu-item">About</li>
