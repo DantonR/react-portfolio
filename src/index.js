@@ -3,44 +3,19 @@ import ReactDOM from "react-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import "./style.scss";
-
-import annualCover from "./images/Cover Images/annual-report_cover.jpg";
-import packagingCover from "./images/Cover Images/packaging_cover.jpg";
-import radlerCover from "./images/Cover Images/radler_cover.jpg";
-import breakersCover from "./images/Cover Images/breakers_cover.jpg";
-
-function Header(props) {
-  return (
-    <header className="header">
-      <div className="container">
-        <nav className="navbar">
-          <a href="#" className="header__title">
-            Danton <br /> Ruthe
-          </a>
-          <ul className="header__nav-menu">
-            <li className="header__nav-menu-item" onClick={props.onClick}>
-              Work
-            </li>
-            <li className="header__nav-menu-item">About</li>
-            <li className="header__nav-menu-item">Contact</li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-  );
-}
+import Header from "./components/header/header";
+import FrontPage from "./components/frontpage/frontpage";
 
 class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       roleName: "Graphic Designer",
-      paraClassName: "intro-section__paragraph intro-section__paragraph--hide",
-      homeImagesClassName: "home-images home-images--show",
+      paraClassName: "intro-section__paragraph--hide",
+      homeImagesClassName: "home-images--show",
       currentPage: "home"
     };
 
-    this.testEvent = this.testEvent.bind(this);
     this.loadParagraph = this.loadParagraph.bind(this);
   }
   componentDidMount() {
@@ -49,14 +24,14 @@ class Index extends React.Component {
 
   loadParagraph() {
     this.setState({
-      paraClassName: "intro-section__paragraph intro-section__paragraph--show"
+      paraClassName: "intro-section__paragraph--show"
     });
   }
 
   testEvent() {
     this.setState({
-      paraClassName: "intro-section__paragraph intro-section__paragraph--hide",
-      homeImagesClassName: "home-images home-images--hide"
+      paraClassName: "intro-section__paragraph--hide",
+      homeImagesClassName: "home-images--hide"
     });
   }
 
@@ -67,10 +42,17 @@ class Index extends React.Component {
     this.testEvent2();
   }
 
-  testEvent2() {
+  hideFrontPage() {
     this.setState({
-      paraClassName: "intro-section__paragraph intro-section__paragraph--hide",
-      homeImagesClassName: "home-images home-images--hide"
+      paraClassName: "intro-section__paragraph--hide",
+      homeImagesClassName: "home-images--hide"
+    });
+  }
+
+  showFrontPage() {
+    this.setState({
+      paraClassName: "intro-section__paragraph--show",
+      homeImagesClassName: "home-images--show"
     });
   }
 
@@ -81,60 +63,12 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <body>
-          <Header onClick={() => this.testEvent2()} />
-
-          <main>
-            <div className="intro-section">
-              <p className={this.state.paraClassName}>
-                Danton is a Graphic Designer with experience in web, ux, and
-                digital design.
-              </p>
-            </div>
-
-            <div className={this.state.homeImagesClassName} id="homeImages">
-              <div className="container">
-                <div className="row">
-                  <div className="col-6">
-                    <img
-                      id="imageOne"
-                      className="home-images__image"
-                      src={annualCover}
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-6">
-                    <a href="#" className="home-images__link">
-                      <img
-                        className="home-images__image"
-                        src={radlerCover}
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div className="col-6 mt-3">
-                    <a href="#" className="home-images__link">
-                      <img
-                        className="home-images__image"
-                        src={packagingCover}
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div className="col-6 mt-3">
-                    <a href="#" className="home-images__link">
-                      <img
-                        className="home-images__image"
-                        src={breakersCover}
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </body>
+        <Header onClick={() => this.showFrontPage()} />
+        <FrontPage
+          paraClassName={this.state.paraClassName}
+          homeImagesClassName={this.state.homeImagesClassName}
+          onClick={() => this.hideFrontPage()}
+        />
       </div>
     );
   }
