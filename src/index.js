@@ -33,7 +33,6 @@ class Index extends React.Component {
   }
 
   animateContent() {
-    console.log(this.state.currentPage);
     if (this.state.currentPage === "index") {
       this.setState({
         indexClassName: "index-section--show"
@@ -43,20 +42,38 @@ class Index extends React.Component {
 
   changePage(pageNumber) {
     console.log(pageNumber);
-    if (pageNumber === "annual") {
-      this.setState({
-        indexClassName: "index-section--hide"
-      });
-    } else if (pageNumber === "index") {
-      this.setState({
-        indexClassName: "index-section--show"
-      });
-    }
+    // if (pageNumber === "annual") {
+    //   this.setState({
+    //     indexClassName: "pageOne"
+    //   });
+    // } else if (pageNumber === "index") {
+    //   this.setState({
+    //     indexClassName: "home"
+    //   });
+    // }
+    this.setState({
+      currentPage: pageNumber
+    });
   }
 
   showFrontPage() {}
 
   render() {
+    var currentPage = this.state.currentPage;
+    let page;
+
+    if (currentPage === "home") {
+      page = (
+        <FrontPage
+          indexClassName={this.state.indexClassName}
+          changePage={this.changePage}
+          data={this.state.content}
+        />
+      );
+    } else if (currentPage === "pageOne") {
+      page = <Project />;
+    }
+
     return (
       <div>
         <Header changePage={this.changePage} />
@@ -65,7 +82,8 @@ class Index extends React.Component {
           changePage={this.changePage}
           data={this.state.content}
         /> */}
-        <Project />
+        {/* <Project /> */}
+        {page}
       </div>
     );
   }
