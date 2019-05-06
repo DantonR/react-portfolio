@@ -1,3 +1,16 @@
+.index-section {
+  transition: all 0.5s;
+}
+
+.index-section--show {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+.index-section--hide {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
 .intro-section {
   width: 95%;
   height: 80vh;
@@ -14,27 +27,8 @@
   position: fixed;
   transition: all 1s;
 }
-
-.intro-section__paragraph--show {
-  opacity: 1;
-  transform: translateY(0rem);
-}
-.intro-section__paragraph--hide {
-  opacity: 0;
-  transform: translateY(10rem);
-}
-
 .home-images {
   transition: all 1s;
-}
-
-.home-images--show {
-  opacity: 1;
-  transform: translateY(0rem);
-}
-.home-images--hide {
-  opacity: 0;
-  transform: translateY(10rem);
 }
 
 .home-images__image {

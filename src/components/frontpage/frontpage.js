@@ -7,53 +7,58 @@ import breakersCover from "../../images/Cover Images/breakers_cover.jpg";
 const FrontPage = props => {
   return (
     <React.Fragment>
-      <div className="intro-section">
-        <p className={"intro-section__paragraph " + props.paraClassName}>
-          Danton is a Graphic Designer with experience in web, ux, and digital
-          design.
-        </p>
-      </div>
-
-      <div
-        className={"home-images " + props.homeImagesClassName}
-        id="homeImages"
+      <section
+        className={"index-section " + props.indexClassName}
+        id="indexSection"
       >
-        <div className="container">
-          <div className="row">
-            <div className="col-6">
-              <img
-                id="imageOne"
-                className="home-images__image"
-                src={annualCover}
-                alt=""
-                onClick={() => props.changePage("annual")}
-              />
-            </div>
-            <div className="col-6">
-              <a href="#" className="home-images__link">
-                <img className="home-images__image" src={radlerCover} alt="" />
-              </a>
-            </div>
-            <div className="col-6 mt-3">
-              <img
-                className="home-images__image"
-                src={packagingCover}
-                alt=""
-                onClick={console.dir(props)}
-              />
-            </div>
-            <div className="col-6 mt-3">
-              <a href="#" className="home-images__link">
+        <div className="intro-section">
+          <p className="intro-section__paragraph">
+            Danton Ruthe is a graphic designer with
+          </p>
+        </div>
+
+        <div className="home-images" id="homeImages">
+          <div className="container">
+            <div className="row">
+              <div className="col-6">
+                <img
+                  id="imageOne"
+                  className="home-images__image"
+                  src={annualCover}
+                  alt=""
+                  onClick={() => props.changePage("annual")}
+                />
+              </div>
+              <div className="col-6">
+                <a href="#" className="home-images__link">
+                  <img
+                    className="home-images__image"
+                    src={radlerCover}
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div className="col-6 mt-3">
                 <img
                   className="home-images__image"
-                  src={breakersCover}
+                  src={packagingCover}
                   alt=""
+                  onClick={console.dir(props)}
                 />
-              </a>
+              </div>
+              <div className="col-6 mt-3">
+                <a href="#" className="home-images__link">
+                  <img
+                    className="home-images__image"
+                    src={breakersCover}
+                    alt=""
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </React.Fragment>
   );
 };

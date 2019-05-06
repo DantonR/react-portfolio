@@ -5,21 +5,16 @@ import "./index.css";
 import "./style.scss";
 import Header from "./components/header/header";
 import FrontPage from "./components/frontpage/frontpage";
+import Data from "./pages.json";
 
 class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       roleName: "Graphic Designer",
-      paraClassName: "intro-section__paragraph--hide",
-      homeImagesClassName: "home-images--show",
       currentPage: "home",
-      content: [
-        {
-          item1: "annual report",
-          item2: "radler tours"
-        }
-      ]
+      content: Data,
+      indexClassName: "index-section--show"
     };
 
     this.loadParagraph = this.loadParagraph.bind(this);
@@ -40,8 +35,7 @@ class Index extends React.Component {
     console.log(this.state.currentPage);
     if (this.state.currentPage === "index") {
       this.setState({
-        paraClassName: "intro-section__paragraph--hide",
-        homeImagesClassName: "home-images--hide"
+        indexClassName: "index-section--show"
       });
     }
   }
@@ -50,13 +44,11 @@ class Index extends React.Component {
     console.log(pageNumber);
     if (pageNumber === "annual") {
       this.setState({
-        paraClassName: "intro-section__paragraph--hide",
-        homeImagesClassName: "home-images--hide"
+        indexClassName: "index-section--hide"
       });
     } else if (pageNumber === "index") {
       this.setState({
-        paraClassName: "intro-section__paragraph--show",
-        homeImagesClassName: "home-images--show"
+        indexClassName: "index-section--show"
       });
     }
   }
@@ -68,8 +60,7 @@ class Index extends React.Component {
       <div>
         <Header changePage={this.changePage} />
         <FrontPage
-          paraClassName={this.state.paraClassName}
-          homeImagesClassName={this.state.homeImagesClassName}
+          indexClassName={this.state.indexClassName}
           changePage={this.changePage}
           data={this.state.content}
         />
