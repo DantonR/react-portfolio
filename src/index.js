@@ -5,6 +5,7 @@ import "./index.css";
 import "./style.scss";
 import Header from "./components/header/header";
 import FrontPage from "./components/frontpage/frontpage";
+import Project from "./components/project/project";
 import Data from "./pages.json";
 
 class Index extends React.Component {
@@ -59,11 +60,12 @@ class Index extends React.Component {
     return (
       <div>
         <Header changePage={this.changePage} />
-        <FrontPage
+        {/* <FrontPage
           indexClassName={this.state.indexClassName}
           changePage={this.changePage}
           data={this.state.content}
-        />
+        /> */}
+        <Project />
       </div>
     );
   }
