@@ -15,48 +15,37 @@ class Index extends React.Component {
       roleName: "Graphic Designer",
       currentPage: "home",
       content: Data,
-      indexClassName: "index-section--show"
+      indexClassName: "index-section--show",
+      homeIsShown: true
     };
-
-    this.loadParagraph = this.loadParagraph.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.animateContent = this.animateContent.bind(this);
-  }
-  componentDidMount() {
-    setTimeout(this.loadParagraph, 200);
-  }
-
-  loadParagraph() {
-    this.setState({
-      paraClassName: "intro-section__paragraph--show"
-    });
-  }
-
-  animateContent() {
-    if (this.state.currentPage === "index") {
-      this.setState({
-        indexClassName: "index-section--show"
-      });
-    }
+    this.renderComponent = this.renderComponent.bind(this);
   }
 
   changePage(pageNumber) {
-    console.log(pageNumber);
-    // if (pageNumber === "annual") {
-    //   this.setState({
-    //     indexClassName: "pageOne"
-    //   });
-    // } else if (pageNumber === "index") {
-    //   this.setState({
-    //     indexClassName: "home"
-    //   });
-    // }
     this.setState({
-      currentPage: pageNumber
+      homeIsShown: !this.state.homeIsShown
     });
+    console.log(this.state.homeIsShown);
   }
 
   showFrontPage() {}
+
+  renderComponent(componentName) {
+    if (componentName === "home") {
+      return (
+        <FrontPage
+          indexClassName={this.state.indexClassName}
+          changePage={this.changePage}
+          data={this.state.content}
+          inProp={true}
+          renderComponent={this.renderComponent}
+        />
+      );
+    } else if (componentName === "pageOne") {
+      return <Project renderComponent={this.renderComponent} inProp={true} />;
+    }
+  }
 
   render() {
     var currentPage = this.state.currentPage;
@@ -68,6 +57,8 @@ class Index extends React.Component {
           indexClassName={this.state.indexClassName}
           changePage={this.changePage}
           data={this.state.content}
+          inProp={this.state.homeIsShown}
+          renderComponent={this.state.renderComponent}
         />
       );
     } else if (currentPage === "pageOne") {
@@ -76,14 +67,14 @@ class Index extends React.Component {
 
     return (
       <div>
-        <Header changePage={this.changePage} />
-        {/* <FrontPage
+        <Header renderComponent={this.renderComponent} />
+        <FrontPage
           indexClassName={this.state.indexClassName}
           changePage={this.changePage}
           data={this.state.content}
-        /> */}
-        {/* <Project /> */}
-        {page}
+          inProp={this.state.homeIsShown}
+          renderComponent={this.state.renderComponent}
+        />
       </div>
     );
   }

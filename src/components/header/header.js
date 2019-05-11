@@ -11,7 +11,7 @@ function Header(props) {
           <ul className="header__nav-menu">
             <li
               className="header__nav-menu-item"
-              onClick={() => props.changePage("index")}
+              onClick={() => props.renderComponent("home")}
             >
               Work
             </li>
