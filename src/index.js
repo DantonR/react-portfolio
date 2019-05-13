@@ -13,41 +13,63 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: "home",
+      currentPage: "frontpage",
       content: Data,
       pageStates: {
-        indexState: true,
+        frontpageState: true,
         projectState: false,
         aboutState: false,
         contactState: false
       }
     };
-    this.changePage = this.changePage.bind(this);
+
+    // Bound Functions
     this.renderComponent = this.renderComponent.bind(this);
   }
 
-  changePage(pageNumber) {
-    this.setState({
-      homeIsShown: !this.state.homeIsShown
-    });
-    console.log(this.state.homeIsShown);
-  }
-
+  // This function will run when nav links or cover images are clicked. It
+  // changes the current page to whatever argument the onClick function passes
+  // through, and also changes the pageStates to represent what components are
+  // being displayed.
   renderComponent(componentName) {
     this.setState({
       currentPage: componentName
     });
+
+    // if statement that changes pageStates depending on argument
+    if (componentName === "frontpage") {
+      this.setState({
+        pageStates: {
+          frontpageState: true,
+          projectState: false,
+          aboutState: false,
+          contactState: false
+        }
+      });
+    } else if (componentName === "project") {
+      this.setState({
+        pageStates: {
+          frontpageState: false,
+          projectState: true,
+          aboutState: false,
+          contactState: false
+        }
+      });
+    }
   }
 
+  // Index Render
   render() {
     const pageStates = this.state.pageStates;
     var currentPage = this.state.currentPage;
     let page;
 
+    // The page variable will change depending on what the page states are,
+    // through the in prop being called to the transition components.
     page = (
       <div>
         <Transition
-          in={pageStates.indexState}
+          in={pageStates.frontpageState}
           timeout={300}
           mountOnEnter={true}
           unmountOnExit={true}
@@ -59,80 +81,22 @@ class Index extends React.Component {
             />
           )}
         </Transition>
+
+        <Transition
+          in={pageStates.projectState}
+          timeout={300}
+          mountOnEnter={true}
+          unmountOnExit={true}
+        >
+          {state => (
+            <Project
+              renderComponent={this.renderComponent}
+              classProp={`component component-${state}`}
+            />
+          )}
+        </Transition>
       </div>
     );
-
-    if (currentPage === "home") {
-      page = (
-        <div>
-          <Transition
-            in={true}
-            timeout={300}
-            mountOnEnter={true}
-            unmountOnExit={true}
-          >
-            {state => (
-              <FrontPage
-                changePage={this.changePage}
-                data={this.state.content}
-                renderComponent={this.renderComponent}
-                classProp={`component component-${state}`}
-              />
-            )}
-          </Transition>
-
-          <Transition
-            in={false}
-            timeout={300}
-            mountOnEnter={true}
-            unmountOnExit={true}
-          >
-            {state => (
-              <Project
-                renderComponent={this.renderComponent}
-                classProp={`component component-${state}`}
-              />
-            )}
-          </Transition>
-        </div>
-      );
-    } else if (currentPage === "pageOne") {
-      console.log("working");
-      page = (
-        <div>
-          <Transition
-            in={false}
-            timeout={300}
-            mountOnEnter={true}
-            unmountOnExit={true}
-          >
-            {state => (
-              <FrontPage
-                changePage={this.changePage}
-                data={this.state.content}
-                inProp={false}
-                renderComponent={this.renderComponent}
-                classProp={`component component-${state}`}
-              />
-            )}
-          </Transition>
-
-          <Transition
-            in={true}
-            timeout={300}
-            mountOnEnter={true}
-            unmountOnExit={true}
-          >
-            {state => (
-              <Project
-                renderComponent={this.renderComponent}
-                classProp={`component component-${state}`}
-              />
-            )}
-          </Transition>
-        </div>
-      );
-    }
 
     return (
       <div>

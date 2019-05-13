@@ -25,3 +25,14 @@
   transform: translateY(0rem);
   opacity: 1 !important;
 }
+
+.animation-entering {
+  animation-name: entering;
+  animation-duration: 0.3s;
+}
+.animation-exiting {
+  animation-name: exiting;
+  animation-duration: 0.3s;
+}
+@keyframes entering {
+}
