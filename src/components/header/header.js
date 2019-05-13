@@ -5,7 +5,11 @@ function Header(props) {
     <header className="header">
       <div className="container">
         <nav className="navbar">
-          <a href="#" className="header__title">
+          <a
+            href="#"
+            className="header__title"
+            onClick={() => props.renderComponent("frontpage")}
+          >
             Danton <br /> Ruthe
           </a>
           <ul className="header__nav-menu">

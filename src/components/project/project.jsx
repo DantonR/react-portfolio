@@ -9,7 +9,11 @@ import sixthPage from "../../images/Annual Report/11-12.jpg";
 
 const images = [firstPage, secondPage, thirdPage];
 
+// testFunction
+
 const Project = props => {
+  const data = props.data;
+
   return (
     <React.Fragment>
       <section
@@ -19,33 +23,26 @@ const Project = props => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h1 className="project__heading">Annual Report</h1>
+              <h1
+                className="project__heading"
+                onClick={() => {
+                  console.dir(props);
+                }}
+              >
+                Annual Report
+              </h1>
             </div>
             <div className="col-4">
               <p className="project__body">DESCRIPTION</p>
-              <p className="project__body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos atque culpa fuga eveniet architecto consequuntur,
-                odit itaque impedit, eius aperiam rem, nulla odio consectetur
-                maiores provident possimus laudantium quasi nostrum.
-              </p>
+              <p className="project__body">{data.description}</p>
             </div>
             <div className="col-4">
               <p className="project__body">CLIENT</p>
-              <p className="project__body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos atque culpa fuga eveniet architecto consequuntur,
-                odit itaque impedit.
-              </p>
+              <p className="project__body">{data.client}</p>
             </div>
             <div className="col-4">
               <p className="project__body">SKILLS USED</p>
-              <p className="project__body">
-                Indesign
-                <br />
-                Illustrator
-                <br />
-              </p>
+              <p className="project__body">{data.skills}</p>
             </div>
           </div>
           <div className="row">

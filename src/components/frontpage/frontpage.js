@@ -25,7 +25,9 @@ const FrontPage = props => {
                   className="home-images__image"
                   src={annualCover}
                   alt=""
-                  onClick={() => props.renderComponent("project")}
+                  onClick={() =>
+                    props.renderComponent("project", "annualReport")
+                  }
                 />
               </div>
               <div className="col-6">
@@ -34,6 +36,9 @@ const FrontPage = props => {
                     className="home-images__image"
                     src={radlerCover}
                     alt=""
+                    onClick={() =>
+                      props.renderComponent("project", "radlerTours")
+                    }
                   />
                 </a>
               </div>

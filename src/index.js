@@ -20,7 +20,8 @@ class Index extends React.Component {
         projectState: false,
         aboutState: false,
         contactState: false
-      }
+      },
+      pageData: {}
     };
 
     // Bound Functions
@@ -31,7 +32,7 @@ class Index extends React.Component {
   // changes the current page to whatever argument the onClick function passes
   // through, and also changes the pageStates to represent what components are
   // being displayed.
-  renderComponent(componentName) {
+  renderComponent(componentName, pageName) {
     this.setState({
       currentPage: componentName
     });
@@ -47,13 +48,16 @@ class Index extends React.Component {
         }
       });
     } else if (componentName === "project") {
+      console.log(pageName);
+      console.dir(this.state.content[pageName]);
       this.setState({
         pageStates: {
           frontpageState: false,
           projectState: true,
           aboutState: false,
           contactState: false
-        }
+        },
+        pageData: this.state.content[pageName]
       });
     }
   }
@@ -91,6 +95,7 @@ class Index extends React.Component {
           {state => (
             <Project
               renderComponent={this.renderComponent}
+              data={this.state.pageData}
               classProp={`component component-${state}`}
             />
           )}
