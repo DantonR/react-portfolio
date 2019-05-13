@@ -7,7 +7,21 @@ import Header from "./components/header/header";
 import FrontPage from "./components/frontpage/frontpage";
 import Project from "./components/project/project";
 import Data from "./pages.json";
-import { useSpring, animated } from "react-spring";
+import { Transition } from "react-transition-group";
+
+const duration = 300;
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0
+};
+
+const transitionStyles = {
+  entering: { opacity: 1 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 }
+};
 
 class Index extends React.Component {
   constructor(props) {
@@ -33,19 +47,24 @@ class Index extends React.Component {
   showFrontPage() {}
 
   renderComponent(componentName) {
-    if (componentName === "home") {
-      return (
-        <FrontPage
-          indexClassName={this.state.indexClassName}
-          changePage={this.changePage}
-          data={this.state.content}
-          inProp={true}
-          renderComponent={this.renderComponent}
-        />
-      );
-    } else if (componentName === "pageOne") {
-      return <Project renderComponent={this.renderComponent} inProp={true} />;
-    }
+    // console.log(componentName);
+    // if (componentName === "home") {
+    //   return (
+    //     <FrontPage
+    //       indexClassName={this.state.indexClassName}
+    //       changePage={this.changePage}
+    //       data={this.state.content}
+    //       inProp={true}
+    //       renderComponent={this.renderComponent}
+    //     />
+    //   );
+    // } else if (componentName === "pageOne") {
+    //   debugger;
+    //   return <Project renderComponent={this.renderComponent} inProp={true} />;
+    // }
+    this.setState({
+      currentPage: componentName
+    });
   }
 
   render() {
@@ -54,28 +73,82 @@ class Index extends React.Component {
 
     if (currentPage === "home") {
       page = (
-        <FrontPage
-          indexClassName={this.state.indexClassName}
-          changePage={this.changePage}
-          data={this.state.content}
-          inProp={this.state.homeIsShown}
-          renderComponent={this.state.renderComponent}
-        />
+        <div>
+          <Transition
+            in={true}
+            timeout={500}
+            mountOnEnter={true}
+            unmountOnExit={true}
+          >
+            {state => (
+              <FrontPage
+                indexClassName={this.state.indexClassName}
+                changePage={this.changePage}
+                data={this.state.content}
+                renderComponent={this.renderComponent}
+                classProp={`fade fade-${state}`}
+              />
+            )}
+          </Transition>
+
+          <Transition
+            in={false}
+            timeout={500}
+            mountOnEnter={true}
+            unmountOnExit={true}
+          >
+            {state => (
+              <Project
+                renderComponent={this.renderComponent}
+                classProp={`fade fade-${state}`}
+              />
+            )}
+          </Transition>
+        </div>
       );
     } else if (currentPage === "pageOne") {
-      page = <Project />;
+      console.log("working");
+      page = (
+        <div>
+          <Transition
+            in={false}
+            timeout={500}
+            mountOnEnter={true}
+            unmountOnExit={true}
+          >
+            {state => (
+              <FrontPage
+                indexClassName={this.state.indexClassName}
+                changePage={this.changePage}
+                data={this.state.content}
+                inProp={false}
+                renderComponent={this.renderComponent}
+                classProp={`fade fade-${state}`}
+              />
+            )}
+          </Transition>
+
+          <Transition
+            in={true}
+            timeout={500}
+            mountOnEnter={true}
+            unmountOnExit={true}
+          >
+            {state => (
+              <Project
+                renderComponent={this.renderComponent}
+                classProp={`fade fade-${state}`}
+              />
+            )}
+          </Transition>
+        </div>
+      );
     }
 
     return (
       <div>
         <Header renderComponent={this.renderComponent} />
-        <FrontPage
-          indexClassName={this.state.indexClassName}
-          changePage={this.changePage}
-          data={this.state.content}
-          inProp={this.state.homeIsShown}
-          renderComponent={this.state.renderComponent}
-        />
+        {page}
       </div>
     );
   }
