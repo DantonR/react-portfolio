@@ -13,11 +13,14 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      roleName: "Graphic Designer",
       currentPage: "home",
       content: Data,
-      indexClassName: "index-section--show",
-      homeIsShown: true
+      pageStates: {
+        indexState: true,
+        projectState: false,
+        aboutState: false,
+        contactState: false
+      }
     };
     this.changePage = this.changePage.bind(this);
     this.renderComponent = this.renderComponent.bind(this);
@@ -37,8 +40,27 @@ class Index extends React.Component {
   }
 
   render() {
+    const pageStates = this.state.pageStates;
     var currentPage = this.state.currentPage;
     let page;
+
+    page = (
+      <div>
+        <Transition
+          in={pageStates.indexState}
+          timeout={300}
+          mountOnEnter={true}
+          unmountOnExit={true}
+        >
+          {state => (
+            <FrontPage
+              renderComponent={this.renderComponent}
+              classProp={`component component-${state}`}
+            />
+          )}
+        </Transition>
+      </div>
+    );
 
     if (currentPage === "home") {
       page = (
@@ -51,7 +73,6 @@ class Index extends React.Component {
           >
             {state => (
               <FrontPage
-                indexClassName={this.state.indexClassName}
                 changePage={this.changePage}
                 data={this.state.content}
                 renderComponent={this.renderComponent}
@@ -87,7 +108,6 @@ class Index extends React.Component {
           >
             {state => (
               <FrontPage
-                indexClassName={this.state.indexClassName}
                 changePage={this.changePage}
                 data={this.state.content}
                 inProp={false}
