@@ -3,6 +3,25 @@
 @import "./components/frontpage/frontpage";
 @import "./components/project/project";
 
-.fade-entered {
+.component {
+  transition: all 0.3s linear;
+}
+
+.component-entering {
+  transform: translateY(5rem);
+  opacity: 1 !important;
+}
+
+.component-exiting {
+  opacity: 0;
+  transform: translateY(5rem);
+}
+.component-exited {
+  opacity: 0;
+  transform: translateY(10rem);
+}
+
+.component-entered {
+  transform: translateY(0rem);
   opacity: 1 !important;
 }

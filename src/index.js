@@ -9,20 +9,6 @@ import Project from "./components/project/project";
 import Data from "./pages.json";
 import { Transition } from "react-transition-group";
 
-const duration = 300;
-
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0
-};
-
-const transitionStyles = {
-  entering: { opacity: 1 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 }
-};
-
 class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -44,24 +30,7 @@ class Index extends React.Component {
     console.log(this.state.homeIsShown);
   }
 
-  showFrontPage() {}
-
   renderComponent(componentName) {
-    // console.log(componentName);
-    // if (componentName === "home") {
-    //   return (
-    //     <FrontPage
-    //       indexClassName={this.state.indexClassName}
-    //       changePage={this.changePage}
-    //       data={this.state.content}
-    //       inProp={true}
-    //       renderComponent={this.renderComponent}
-    //     />
-    //   );
-    // } else if (componentName === "pageOne") {
-    //   debugger;
-    //   return <Project renderComponent={this.renderComponent} inProp={true} />;
-    // }
     this.setState({
       currentPage: componentName
     });
@@ -76,7 +45,7 @@ class Index extends React.Component {
         <div>
           <Transition
             in={true}
-            timeout={500}
+            timeout={300}
             mountOnEnter={true}
             unmountOnExit={true}
           >
@@ -86,21 +55,21 @@ class Index extends React.Component {
                 changePage={this.changePage}
                 data={this.state.content}
                 renderComponent={this.renderComponent}
-                classProp={`fade fade-${state}`}
+                classProp={`component component-${state}`}
               />
             )}
           </Transition>
 
           <Transition
             in={false}
-            timeout={500}
+            timeout={300}
             mountOnEnter={true}
             unmountOnExit={true}
           >
             {state => (
               <Project
                 renderComponent={this.renderComponent}
-                classProp={`fade fade-${state}`}
+                classProp={`component component-${state}`}
               />
             )}
           </Transition>
@@ -112,7 +81,7 @@ class Index extends React.Component {
         <div>
           <Transition
             in={false}
-            timeout={500}
+            timeout={300}
             mountOnEnter={true}
             unmountOnExit={true}
           >
@@ -123,21 +92,21 @@ class Index extends React.Component {
                 data={this.state.content}
                 inProp={false}
                 renderComponent={this.renderComponent}
-                classProp={`fade fade-${state}`}
+                classProp={`component component-${state}`}
               />
             )}
           </Transition>
 
           <Transition
             in={true}
-            timeout={500}
+            timeout={300}
             mountOnEnter={true}
             unmountOnExit={true}
           >
             {state => (
               <Project
                 renderComponent={this.renderComponent}
-                classProp={`fade fade-${state}`}
+                classProp={`component component-${state}`}
               />
             )}
           </Transition>
