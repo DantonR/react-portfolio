@@ -7,6 +7,7 @@ import Header from "./components/header/header";
 import FrontPage from "./components/frontpage/frontpage";
 import Project from "./components/project/project";
 import Data from "./pages.json";
+import { useSpring, animated } from "react-spring";
 
 class Index extends React.Component {
   constructor(props) {
