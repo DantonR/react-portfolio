@@ -48,8 +48,6 @@ class Index extends React.Component {
         }
       });
     } else if (componentName === "project") {
-      console.log(pageName);
-      console.dir(this.state.content[pageName]);
       this.setState({
         pageStates: {
           frontpageState: false,
@@ -74,21 +72,21 @@ class Index extends React.Component {
       <div>
         <Transition
           in={pageStates.frontpageState}
-          timeout={300}
+          timeout={400}
           mountOnEnter={true}
           unmountOnExit={true}
         >
           {state => (
             <FrontPage
               renderComponent={this.renderComponent}
-              classProp={`component component-${state}`}
+              classProp={`component-${state}`}
             />
           )}
         </Transition>
 
         <Transition
           in={pageStates.projectState}
-          timeout={300}
+          timeout={400}
           mountOnEnter={true}
           unmountOnExit={true}
         >
@@ -96,7 +94,7 @@ class Index extends React.Component {
             <Project
               renderComponent={this.renderComponent}
               data={this.state.pageData}
-              classProp={`component component-${state}`}
+              classProp={`component-${state}`}
             />
           )}
         </Transition>
@@ -106,7 +104,11 @@ class Index extends React.Component {
     return (
       <div>
         <Header renderComponent={this.renderComponent} />
-        {page}
+        <div className="container">
+          <div className="row">
+            <div className="col-12">{page}</div>
+          </div>
+        </div>
       </div>
     );
   }

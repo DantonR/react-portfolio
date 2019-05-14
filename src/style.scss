@@ -3,19 +3,10 @@
 @import "./components/frontpage/frontpage";
 @import "./components/project/project";
 
-.component {
-  transition: all 0.3s linear;
-}
+// .component {
+//   transition: all 0.3s linear;
+// }
 
-.component-entering {
-  transform: translateY(5rem);
-  opacity: 1 !important;
-}
-
-.component-exiting {
-  opacity: 0;
-  transform: translateY(5rem);
-}
 .component-exited {
   opacity: 0;
   transform: translateY(10rem);
@@ -26,13 +17,40 @@
   opacity: 1 !important;
 }
 
-.animation-entering {
+.component-entering {
   animation-name: entering;
-  animation-duration: 0.3s;
+  animation-duration: 0.4s;
 }
-.animation-exiting {
+.component-exiting {
   animation-name: exiting;
-  animation-duration: 0.3s;
+  animation-duration: 0.4s;
 }
 @keyframes entering {
+  from {
+    opacity: 0;
+    // transform: translateY(10rem);
+  }
+  to {
+    opacity: 1 !important;
+    // transform: translateY(0rem);
+  }
+}
+@keyframes exiting {
+  from {
+    opacity: 1 !important;
+    transform: translateY(0rem);
+  }
+  to {
+    opacity: 0;
+    // transform: translateY(10rem);
+  }
+}
+
+#indexSection,
+#projectSection {
+  position: absolute;
+}
+
+.component-container {
+  position: relative;
 }

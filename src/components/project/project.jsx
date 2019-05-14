@@ -16,46 +16,48 @@ const Project = props => {
 
   return (
     <React.Fragment>
-      <section
-        id="projectSection"
-        className={"project-section " + props.classProp}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h1
-                className="project__heading"
-                onClick={() => {
-                  console.dir(props);
-                }}
-              >
-                Annual Report
-              </h1>
-            </div>
-            <div className="col-4">
-              <p className="project__body">DESCRIPTION</p>
-              <p className="project__body">{data.description}</p>
-            </div>
-            <div className="col-4">
-              <p className="project__body">CLIENT</p>
-              <p className="project__body">{data.client}</p>
-            </div>
-            <div className="col-4">
-              <p className="project__body">SKILLS USED</p>
-              <p className="project__body">{data.skills}</p>
-            </div>
-          </div>
-          <div className="row">
-            <section className="project__img-section">
+      <div className="component-container">
+        <section
+          id="projectSection"
+          className={"project-section " + props.classProp}
+        >
+          <div className="container">
+            <div className="row">
               <div className="col-12">
-                {images.map(image => (
-                  <img src={image} className="full-width-img" />
-                ))}
+                <h1
+                  className="project__heading"
+                  onClick={() => {
+                    console.dir(props);
+                  }}
+                >
+                  Annual Report
+                </h1>
               </div>
-            </section>
+              <div className="col-4">
+                <p className="project__body">DESCRIPTION</p>
+                <p className="project__body">{data.description}</p>
+              </div>
+              <div className="col-4">
+                <p className="project__body">CLIENT</p>
+                <p className="project__body">{data.client}</p>
+              </div>
+              <div className="col-4">
+                <p className="project__body">SKILLS USED</p>
+                <p className="project__body">{data.skills}</p>
+              </div>
+            </div>
+            <div className="row">
+              <section className="project__img-section">
+                <div className="col-12">
+                  {images.map(image => (
+                    <img src={image} className="full-width-img" />
+                  ))}
+                </div>
+              </section>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </React.Fragment>
   );
 };
