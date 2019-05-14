@@ -12,8 +12,8 @@ const FrontPage = props => {
         <section id="indexSection" className={props.classProp}>
           <div className="intro-section">
             <p className="intro-section__paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Danton is a front end developer with design expertise who puts a
+              strong emphasis on user experience and well executed solutions.
             </p>
           </div>
 

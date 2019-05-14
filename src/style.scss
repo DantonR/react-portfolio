@@ -26,11 +26,9 @@
   animation-duration: 0.4s;
 }
 @keyframes entering {
-<<<<<<< HEAD
   0% {
     transform: translateY(10rem);
   }
-=======
   from {
     opacity: 0;
     // transform: translateY(10rem);
@@ -58,5 +56,4 @@
 
 .component-container {
   position: relative;
->>>>>>> b8ca9b39565d0ac46ce8f46e1c39bd73f881fb42
 }
