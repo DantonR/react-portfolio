@@ -20,7 +20,8 @@ class Index extends React.Component {
         projectState: false,
         aboutState: false,
         contactState: false
-      }
+      },
+      pageData: {}
     };
 
     // Bound Functions
@@ -31,7 +32,7 @@ class Index extends React.Component {
   // changes the current page to whatever argument the onClick function passes
   // through, and also changes the pageStates to represent what components are
   // being displayed.
-  renderComponent(componentName) {
+  renderComponent(componentName, pageName) {
     this.setState({
       currentPage: componentName
     });
@@ -53,7 +54,8 @@ class Index extends React.Component {
           projectState: true,
           aboutState: false,
           contactState: false
-        }
+        },
+        pageData: this.state.content[pageName]
       });
     }
   }
@@ -70,28 +72,29 @@ class Index extends React.Component {
       <div>
         <Transition
           in={pageStates.frontpageState}
-          timeout={300}
+          timeout={400}
           mountOnEnter={true}
           unmountOnExit={true}
         >
           {state => (
             <FrontPage
               renderComponent={this.renderComponent}
-              classProp={`component component-${state}`}
+              classProp={`component-${state}`}
             />
           )}
         </Transition>
 
         <Transition
           in={pageStates.projectState}
-          timeout={300}
+          timeout={400}
           mountOnEnter={true}
           unmountOnExit={true}
         >
           {state => (
             <Project
               renderComponent={this.renderComponent}
-              classProp={`component component-${state}`}
+              data={this.state.pageData}
+              classProp={`component-${state}`}
             />
           )}
         </Transition>
@@ -101,7 +104,11 @@ class Index extends React.Component {
     return (
       <div>
         <Header renderComponent={this.renderComponent} />
-        {page}
+        <div className="container">
+          <div className="row">
+            <div className="col-12">{page}</div>
+          </div>
+        </div>
       </div>
     );
   }

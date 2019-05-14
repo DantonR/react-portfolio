@@ -1,6 +1,12 @@
 {
-  "page1": {
-    "title": "index",
-    "images": ""
+  "annualReport": {
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos atque culpa fuga eveniet architecto consequuntur,",
+    "client": "Fonterra",
+    "skills": "Indesign, Illustrator, Photoshop, Typesetting"
+  },
+  "radlerTours": {
+    "description": "Dignissimos atque culpa fuga eveniet architecto consequuntur,",
+    "client": "Radler Tours",
+    "skills": "Indesign, Illustrator, Photoshop, Typesetting"
   }
 }
