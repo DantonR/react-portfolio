@@ -7,7 +7,7 @@ import Header from "./components/header/header";
 import FrontPage from "./components/frontpage/frontpage";
 import Project from "./components/project/project";
 import Data from "./pages.json";
-import { Transition } from "react-transition-group";
+import { Transition, CSSTransition } from "react-transition-group";
 
 class Index extends React.Component {
   constructor(props) {
@@ -65,6 +65,7 @@ class Index extends React.Component {
     const pageStates = this.state.pageStates;
     var currentPage = this.state.currentPage;
     let page;
+    let pageVersionTwo;
 
     // The page variable will change depending on what the page states are,
     // through the in prop being called to the transition components.
@@ -72,43 +73,67 @@ class Index extends React.Component {
       <div>
         <Transition
           in={pageStates.frontpageState}
-          timeout={400}
-          mountOnEnter={true}
+          timeout={1000}
+          // mountOnEnter={true}
           unmountOnExit={true}
         >
           {state => (
             <FrontPage
               renderComponent={this.renderComponent}
-              classProp={`component-${state}`}
+              classProp={`component component-${state}`}
             />
           )}
         </Transition>
 
         <Transition
           in={pageStates.projectState}
-          timeout={400}
-          mountOnEnter={true}
+          timeout={1000}
           unmountOnExit={true}
         >
           {state => (
             <Project
               renderComponent={this.renderComponent}
               data={this.state.pageData}
-              classProp={`component-${state}`}
+              classProp={`component component-${state}`}
             />
           )}
         </Transition>
       </div>
     );
 
+    pageVersionTwo = (
+      <div>
+        <CSSTransition
+          in={pageStates.frontpageState}
+          timeout={1000}
+          classNames="my-node"
+          unmountOnExit={true}
+        >
+          <FrontPage
+            renderComponent={this.renderComponent}
+            classProp={"position-absolute"}
+          />
+        </CSSTransition>
+
+        <CSSTransition
+          in={pageStates.projectState}
+          timeout={1000}
+          classNames="my-node"
+          unmountOnExit={true}
+        >
+          <Project
+            renderComponent={this.renderComponent}
+            data={this.state.pageData}
+            classProp={"position-absolute"}
+          />
+        </CSSTransition>
+      </div>
+    );
+
     return (
       <div>
         <Header renderComponent={this.renderComponent} />
-        <div className="container">
-          <div className="row">
-            <div className="col-12">{page}</div>
-          </div>
-        </div>
+        {pageVersionTwo}
       </div>
     );
   }

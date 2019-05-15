@@ -8,62 +8,60 @@ import breakersCover from "../../images/Cover Images/breakers_cover.jpg";
 const FrontPage = props => {
   return (
     <React.Fragment>
-      <div className="component-container">
-        <section id="indexSection" className={props.classProp}>
-          <div className="intro-section">
-            <p className="intro-section__paragraph">
-              Danton is a front end developer with design expertise who puts a
-              strong emphasis on user experience and well executed solutions.
-            </p>
-          </div>
+      <section id="indexSection" className={props.classProp}>
+        <div className="intro-section">
+          <p className="intro-section__paragraph">
+            Danton is a front end developer with design expertise who puts a
+            strong emphasis on user experience and well executed solutions.
+          </p>
+        </div>
 
-          <div className="home-images" id="homeImages">
-            <div className="container">
-              <div className="row">
-                <div className="col-6">
+        <div className="home-images" id="homeImages">
+          <div className="container">
+            <div className="row">
+              <div className="col-6">
+                <img
+                  id="imageOne"
+                  className="home-images__image"
+                  src={annualCover}
+                  alt=""
+                  onClick={() =>
+                    props.renderComponent("project", "annualReport")
+                  }
+                />
+              </div>
+              <div className="col-6">
+                <a href="#" className="home-images__link">
                   <img
-                    id="imageOne"
                     className="home-images__image"
-                    src={annualCover}
+                    src={radlerCover}
                     alt=""
                     onClick={() =>
-                      props.renderComponent("project", "annualReport")
+                      props.renderComponent("project", "radlerTours")
                     }
                   />
-                </div>
-                <div className="col-6">
-                  <a href="#" className="home-images__link">
-                    <img
-                      className="home-images__image"
-                      src={radlerCover}
-                      alt=""
-                      onClick={() =>
-                        props.renderComponent("project", "radlerTours")
-                      }
-                    />
-                  </a>
-                </div>
-                <div className="col-6 mt-3">
+                </a>
+              </div>
+              <div className="col-6 mt-3">
+                <img
+                  className="home-images__image"
+                  src={packagingCover}
+                  alt=""
+                />
+              </div>
+              <div className="col-6 mt-3">
+                <a href="#" className="home-images__link">
                   <img
                     className="home-images__image"
-                    src={packagingCover}
+                    src={breakersCover}
                     alt=""
                   />
-                </div>
-                <div className="col-6 mt-3">
-                  <a href="#" className="home-images__link">
-                    <img
-                      className="home-images__image"
-                      src={breakersCover}
-                      alt=""
-                    />
-                  </a>
-                </div>
+                </a>
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </React.Fragment>
   );
 };

@@ -3,57 +3,42 @@
 @import "./components/frontpage/frontpage";
 @import "./components/project/project";
 
-// .component {
-//   transition: all 0.3s linear;
+// .component-container {
+//   position: relative;
 // }
 
-.component-exited {
+.component {
+  transition: all 1s ease-in-out;
   opacity: 0;
-  transform: translateY(10rem);
-}
-
-.component-entered {
-  transform: translateY(0rem);
-  opacity: 1 !important;
 }
 
 .component-entering {
-  animation-name: entering;
-  animation-duration: 0.4s;
+  opacity: 0.5;
+}
+.component-entered {
+  opacity: 1;
 }
 .component-exiting {
-  animation-name: exiting;
-  animation-duration: 0.4s;
+  opacity: 0.5;
 }
-@keyframes entering {
-  0% {
-    transform: translateY(10rem);
-  }
-  from {
-    opacity: 0;
-    // transform: translateY(10rem);
-  }
-  to {
-    opacity: 1 !important;
-    // transform: translateY(0rem);
-  }
-}
-@keyframes exiting {
-  from {
-    opacity: 1 !important;
-    transform: translateY(0rem);
-  }
-  to {
-    opacity: 0;
-    // transform: translateY(10rem);
-  }
+.component-exited {
+  opacity: 0;
 }
 
-#indexSection,
-#projectSection {
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+.position-absolute {
   position: absolute;
-}
-
-.component-container {
-  position: relative;
 }
