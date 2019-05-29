@@ -19,7 +19,7 @@ const Project = props => {
       <div className="component-container">
         <section
           id="projectSection"
-          className={"project-section " + props.classProp}
+          className={"project-section position-absolute"}
         >
           <div className="container">
             <div className="row">

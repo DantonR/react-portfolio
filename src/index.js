@@ -105,26 +105,22 @@ class Index extends React.Component {
       <div>
         <CSSTransition
           in={pageStates.frontpageState}
-          timeout={1000}
+          timeout={400}
           classNames="my-node"
           unmountOnExit={true}
         >
-          <FrontPage
-            renderComponent={this.renderComponent}
-            classProp={"position-absolute"}
-          />
+          <FrontPage renderComponent={this.renderComponent} />
         </CSSTransition>
 
         <CSSTransition
           in={pageStates.projectState}
-          timeout={1000}
+          timeout={400}
           classNames="my-node"
           unmountOnExit={true}
         >
           <Project
             renderComponent={this.renderComponent}
             data={this.state.pageData}
-            classProp={"position-absolute"}
           />
         </CSSTransition>
       </div>
@@ -133,7 +129,7 @@ class Index extends React.Component {
     return (
       <div>
         <Header renderComponent={this.renderComponent} />
-        {pageVersionTwo}
+        <div className="container">{pageVersionTwo}</div>
       </div>
     );
   }

@@ -8,7 +8,7 @@ import breakersCover from "../../images/Cover Images/breakers_cover.jpg";
 const FrontPage = props => {
   return (
     <React.Fragment>
-      <section id="indexSection" className={props.classProp}>
+      <section id="indexSection" className="position-absolute">
         <div className="intro-section">
           <p className="intro-section__paragraph">
             Danton is a front end developer with design expertise who puts a

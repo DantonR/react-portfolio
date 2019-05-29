@@ -27,18 +27,23 @@
 
 .my-node-enter {
   opacity: 0;
+  transform: translateY(10rem);
 }
 .my-node-enter-active {
+  transform: translateY(0rem);
   opacity: 1;
-  transition: opacity 1000ms;
+  transition: all 400ms;
 }
 .my-node-exit {
   opacity: 1;
+  transform: translateY(0rem);
 }
 .my-node-exit-active {
   opacity: 0;
-  transition: opacity 1000ms;
+  transform: translateY(10rem);
+  transition: all 400ms;
 }
 .position-absolute {
+  margin-left: -15px;
   position: absolute;
 }
